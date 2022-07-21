@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="fJq-xb-neT">
-                                <rect key="frame" x="27.5" y="366.5" width="359" height="163.5"/>
+                                <rect key="frame" x="41.5" y="366.5" width="331" height="163.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKS-vo-TpF" userLabel="Password Label">
-                                        <rect key="frame" x="154.5" y="0.0" width="50" height="20.5"/>
+                                        <rect key="frame" x="140.5" y="0.0" width="50" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20.5" id="50e-d0-y2c"/>
                                         </constraints>
@@ -29,44 +29,62 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="H1N-YJ-YIt" userLabel="Child Stack View">
-                                        <rect key="frame" x="0.0" y="36.5" width="359" height="34"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gS-P5-bpD" userLabel="Container View">
+                                        <rect key="frame" x="0.0" y="36.5" width="331" height="34"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="atq-uT-hky" userLabel="Password Text Field">
                                                 <rect key="frame" x="0.0" y="0.0" width="331" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="shl-sE-ejP"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Reb-JZ-Bma" userLabel="Activity Indicator">
-                                                <rect key="frame" x="339" y="7" width="20" height="20"/>
+                                                <rect key="frame" x="303" y="7" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="pP9-bq-tip"/>
+                                                    <constraint firstAttribute="width" constant="20" id="slr-8i-bcX"/>
+                                                </constraints>
                                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </activityIndicatorView>
                                         </subviews>
-                                    </stackView>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Reb-JZ-Bma" firstAttribute="centerY" secondItem="7gS-P5-bpD" secondAttribute="centerY" id="0MW-U6-ycl"/>
+                                            <constraint firstItem="atq-uT-hky" firstAttribute="width" secondItem="7gS-P5-bpD" secondAttribute="width" id="BZc-NT-NVu"/>
+                                            <constraint firstItem="atq-uT-hky" firstAttribute="centerX" secondItem="7gS-P5-bpD" secondAttribute="centerX" id="G6I-Jb-aQm"/>
+                                            <constraint firstItem="atq-uT-hky" firstAttribute="centerY" secondItem="7gS-P5-bpD" secondAttribute="centerY" id="kYK-wX-XRY"/>
+                                            <constraint firstItem="Reb-JZ-Bma" firstAttribute="trailing" secondItem="atq-uT-hky" secondAttribute="trailing" constant="-8" id="q2m-8F-Mjl"/>
+                                            <constraint firstAttribute="height" secondItem="atq-uT-hky" secondAttribute="height" id="rr0-4m-zGc"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MH6-Cw-re2" userLabel="Generate Password">
-                                        <rect key="frame" x="90" y="86.5" width="179" height="31"/>
+                                        <rect key="frame" x="76" y="86.5" width="179" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Сгенерировать пароль"/>
                                         <connections>
-                                            <action selector="changeBackgroundColorButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xwP-vY-RRN"/>
                                             <action selector="generatePasswordButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5dt-aZ-nQa"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3g4-cd-RKK" userLabel="Change Background Color Button">
-                                        <rect key="frame" x="105.5" y="133.5" width="148" height="30"/>
+                                        <rect key="frame" x="91.5" y="133.5" width="148" height="30"/>
                                         <state key="normal" title="Изменить цвет фона"/>
                                         <connections>
                                             <action selector="changeBackgroundColorButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pVE-Xp-R1x"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="7gS-P5-bpD" firstAttribute="width" secondItem="fJq-xb-neT" secondAttribute="width" id="5Gu-b6-Aes"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fJq-xb-neT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="UCo-Rc-LV6"/>
-                            <constraint firstItem="atq-uT-hky" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="UiD-SA-jX7"/>
+                            <constraint firstItem="fJq-xb-neT" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="mw3-Lf-BZP"/>
                             <constraint firstItem="fJq-xb-neT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tTE-u9-ijd"/>
                         </constraints>
                     </view>

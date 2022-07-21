@@ -1,5 +1,5 @@
 //
-//  BrutForceOperation.swift
+//  BruteForceOperation.swift
 //  Pr2503
 //
 //  Created by Evgeny Morozov on 20.07.2022.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-class BrutForceOperation: Operation {
-
+class BruteForceOperation: Operation {
+    var bruteforcedPassword: String = ""
     let passwordToUnlock: String
 
     init(passwordToUnlock: String) {
         self.passwordToUnlock = passwordToUnlock
     }
-    
+
     override func main() {
         if self.isCancelled { return }
 
@@ -31,7 +31,7 @@ class BrutForceOperation: Operation {
             password = String.generateBruteForce(password, fromArray: allowedCharacters)
             print(password)
         }
-
+        bruteforcedPassword = password
         return true
     }
 }
