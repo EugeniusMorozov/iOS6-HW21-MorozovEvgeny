@@ -4,8 +4,12 @@ class ViewController: UIViewController {
 
     // MARK: - Properties
 
-    @IBOutlet weak var button: UIButton!
-    
+    @IBOutlet weak var changeBackgroundColorButton: UIButton!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
+    var password: String?
     var isBlack: Bool = false {
         didSet {
             self.view.backgroundColor = isBlack ? .black : .white
@@ -24,7 +28,11 @@ class ViewController: UIViewController {
 
     // MARK: - Actions
 
-    @IBAction func onButtonTapped(_ sender: Any) {
+    @IBAction func changeBackgroundColorButtonTapped(_ sender: Any) {
         isBlack.toggle()
+    }
+
+    @IBAction func generatePasswordButtonTapped(_ sender: Any) {
+
     }
 }
