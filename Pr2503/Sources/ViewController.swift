@@ -17,26 +17,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let queue = DispatchQueue.global(qos: .userInitiated)
-        queue.async {
-            self.bruteForce(passwordToUnlock: "000000")
-        }
-    }
-
-    // MARK: - Functions
-
-    func bruteForce(passwordToUnlock: String) {
-        let allowedCharacters:   [String] = String().printable.map { String($0) }
-        var password: String = ""
-
-        while password != passwordToUnlock {
-            password = String.generateBruteForce(password, fromArray: allowedCharacters)
-            // Your stuff here
-            print(password)
-            // Your stuff here
-        }
-        
-        print(password)
+        let operation = BrutForceOperation(passwordToUnlock: "0000")
+        let queue = OperationQueue()
+        queue.addOperation(operation)
     }
 
     // MARK: - Actions
