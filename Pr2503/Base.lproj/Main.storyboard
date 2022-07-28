@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,20 +17,95 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3g4-cd-RKK">
-                                <rect key="frame" x="192" y="483" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="onBut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XD4-sb-XPE"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="fJq-xb-neT">
+                                <rect key="frame" x="41.5" y="345.5" width="331" height="205.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKS-vo-TpF" userLabel="Password Label">
+                                        <rect key="frame" x="140.5" y="0.0" width="50" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20.5" id="50e-d0-y2c"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gS-P5-bpD" userLabel="Container View">
+                                        <rect key="frame" x="0.0" y="36.5" width="331" height="34"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="atq-uT-hky" userLabel="Password Text Field">
+                                                <rect key="frame" x="0.0" y="0.0" width="331" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="shl-sE-ejP"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                            </textField>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Reb-JZ-Bma" userLabel="Activity Indicator">
+                                                <rect key="frame" x="303" y="7" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="pP9-bq-tip"/>
+                                                    <constraint firstAttribute="width" constant="20" id="slr-8i-bcX"/>
+                                                </constraints>
+                                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Reb-JZ-Bma" firstAttribute="centerY" secondItem="7gS-P5-bpD" secondAttribute="centerY" id="0MW-U6-ycl"/>
+                                            <constraint firstItem="atq-uT-hky" firstAttribute="width" secondItem="7gS-P5-bpD" secondAttribute="width" id="BZc-NT-NVu"/>
+                                            <constraint firstItem="atq-uT-hky" firstAttribute="centerX" secondItem="7gS-P5-bpD" secondAttribute="centerX" id="G6I-Jb-aQm"/>
+                                            <constraint firstItem="atq-uT-hky" firstAttribute="centerY" secondItem="7gS-P5-bpD" secondAttribute="centerY" id="kYK-wX-XRY"/>
+                                            <constraint firstItem="Reb-JZ-Bma" firstAttribute="trailing" secondItem="atq-uT-hky" secondAttribute="trailing" constant="-8" id="q2m-8F-Mjl"/>
+                                            <constraint firstAttribute="height" secondItem="atq-uT-hky" secondAttribute="height" id="rr0-4m-zGc"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MH6-Cw-re2" userLabel="Brute Force Password">
+                                        <rect key="frame" x="107.5" y="86.5" width="116" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Взломать пароль"/>
+                                        <connections>
+                                            <action selector="bruteForcePasswordButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IeT-ux-SwJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taX-NA-1BQ" userLabel="Cancel Brute Force Password">
+                                        <rect key="frame" x="132" y="131.5" width="67" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Отменить"/>
+                                        <connections>
+                                            <action selector="cancelBruteForcePasswordButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="phv-Hh-5EV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3g4-cd-RKK" userLabel="Change Background Color Button">
+                                        <rect key="frame" x="96" y="176.5" width="139" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Изменить цвет фона"/>
+                                        <connections>
+                                            <action selector="changeBackgroundColorButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pVE-Xp-R1x"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="7gS-P5-bpD" firstAttribute="width" secondItem="fJq-xb-neT" secondAttribute="width" id="5Gu-b6-Aes"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fJq-xb-neT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="UCo-Rc-LV6"/>
+                            <constraint firstItem="fJq-xb-neT" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="mw3-Lf-BZP"/>
+                            <constraint firstItem="fJq-xb-neT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tTE-u9-ijd"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="button" destination="3g4-cd-RKK" id="yGm-KB-boF"/>
+                        <outlet property="activityIndicator" destination="Reb-JZ-Bma" id="rkm-Wl-HMx"/>
+                        <outlet property="bruteForcePasswordButton" destination="MH6-Cw-re2" id="N0l-HM-Jut"/>
+                        <outlet property="cancelBruteForcePasswordButton" destination="taX-NA-1BQ" id="SqQ-Pw-p4z"/>
+                        <outlet property="changeBackgroundColorButton" destination="3g4-cd-RKK" id="yGm-KB-boF"/>
+                        <outlet property="passwordLabel" destination="iKS-vo-TpF" id="gwx-gP-U6Q"/>
+                        <outlet property="passwordTextField" destination="atq-uT-hky" id="VKc-Uq-gAC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
