@@ -7,7 +7,13 @@
 
 import Foundation
 
+protocol BruteForceOperationDelegate {
+    func showIntermediateValue(value: String)
+}
+
 class BruteForceOperation: Operation {
+
+    var delegate: BruteForceOperationDelegate?
     var bruteforcedPassword: String = ""
     let passwordToUnlock: String
     var isBruteForced = false
@@ -29,7 +35,9 @@ class BruteForceOperation: Operation {
         while password != passwordToUnlock {
             guard !isCancelled else { return false }
             password = String.generateBruteForce(password, fromArray: allowedCharacters)
-            print(password)
+            if let delegate = delegate {
+                delegate.showIntermediateValue(value: password)
+            }
         }
         bruteforcedPassword = password
         return true

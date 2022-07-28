@@ -30,6 +30,7 @@ class ViewController: UIViewController  {
     private func bruteForcePassword(passwordToUnlock: String) {
         bruteForcePasswordOperation = BruteForceOperation(passwordToUnlock: passwordToUnlock)
         guard let operation = bruteForcePasswordOperation else { return }
+        operation.delegate = self
         operation.completionBlock = {
             DispatchQueue.main.async { [self] in
                 self.activityIndicator.stopAnimating()
@@ -76,11 +77,20 @@ class ViewController: UIViewController  {
     }
 }
 
-// MARK: - UITextFieldDelegate
+// MARK: - Extensions
 
 extension ViewController: UITextFieldDelegate {
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.isSecureTextEntry = true
+    }
+}
+
+extension ViewController: BruteForceOperationDelegate {
+
+    func showIntermediateValue(value: String) {
+        DispatchQueue.main.async { [self] in
+            self.passwordLabel.text = value
+        }
     }
 }
