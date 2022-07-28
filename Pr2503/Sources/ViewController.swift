@@ -1,15 +1,17 @@
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController  {
 
     // MARK: - Properties
 
     @IBOutlet weak var changeBackgroundColorButton: UIButton!
     @IBOutlet weak var bruteForcePasswordButton: UIButton!
+    @IBOutlet weak var cancelBruteForcePasswordButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
+    var bruteForcePasswordOperation: BruteForceOperation?
     var isBlack: Bool = false {
         didSet {
             self.view.backgroundColor = isBlack ? .black : .white
@@ -20,18 +22,26 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordTextField.delegate = self
     }
 
     // MARK: - Private functions
 
     private func bruteForcePassword(passwordToUnlock: String) {
-        let operation = BruteForceOperation(passwordToUnlock: passwordToUnlock)
+        bruteForcePasswordOperation = BruteForceOperation(passwordToUnlock: passwordToUnlock)
+        guard let operation = bruteForcePasswordOperation else { return }
         operation.completionBlock = {
             DispatchQueue.main.async { [self] in
                 self.activityIndicator.stopAnimating()
                 self.bruteForcePasswordButton.isEnabled = true
-                self.passwordTextField.isSecureTextEntry = false
-                self.passwordLabel.text = "Пароль взломан: \(operation.bruteforcedPassword)"
+                self.passwordTextField.isEnabled = true
+                cancelBruteForcePasswordButton.isEnabled = false
+                if operation.isBruteForced {
+                    self.passwordTextField.isSecureTextEntry = false
+                    self.passwordLabel.text = "Пароль взломан: \(operation.bruteforcedPassword)"
+                } else {
+                    self.passwordLabel.text = "Пароль: \(operation.passwordToUnlock) не взломан"
+                }
             }
         }
         let queue = OperationQueue()
@@ -47,11 +57,30 @@ class ViewController: UIViewController {
     @IBAction func bruteForcePasswordButtonTapped(_ sender: Any) {
         guard let password = passwordTextField.text else { return }
         if password == "" { return }
-        activityIndicator.startAnimating()
         bruteForcePasswordButton.isEnabled = false
-        bruteForcePassword(passwordToUnlock: password)
+        passwordTextField.isEnabled = false
+        cancelBruteForcePasswordButton.isEnabled = true
+        activityIndicator.startAnimating()
         passwordTextField.isSecureTextEntry = true
         passwordLabel.text = ""
         passwordTextField.text = password
+        bruteForcePassword(passwordToUnlock: password)
+    }
+
+    @IBAction func cancelBruteForcePasswordButtonTapped(_ sender: Any) {
+        cancelBruteForcePasswordButton.isEnabled = false
+        guard let operation = bruteForcePasswordOperation else { return }
+        if !operation.isCancelled {
+            operation.cancel()
+        }
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension ViewController: UITextFieldDelegate {
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.isSecureTextEntry = true
     }
 }

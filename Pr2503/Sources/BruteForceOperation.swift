@@ -10,17 +10,16 @@ import Foundation
 class BruteForceOperation: Operation {
     var bruteforcedPassword: String = ""
     let passwordToUnlock: String
+    var isBruteForced = false
 
     init(passwordToUnlock: String) {
         self.passwordToUnlock = passwordToUnlock
     }
 
     override func main() {
-        if self.isCancelled { return }
-
-        if bruteForce(passwordToUnlock: passwordToUnlock) {
-            print("Password was brute forced.")
-        }
+        guard !isCancelled else { return }
+        
+        isBruteForced = bruteForce(passwordToUnlock: passwordToUnlock)
     }
 
     func bruteForce(passwordToUnlock: String) -> Bool {
@@ -28,6 +27,7 @@ class BruteForceOperation: Operation {
         var password: String = ""
 
         while password != passwordToUnlock {
+            guard !isCancelled else { return false }
             password = String.generateBruteForce(password, fromArray: allowedCharacters)
             print(password)
         }
